@@ -22,20 +22,17 @@ public class utilisateursController {
     @Autowired
     private utilisateursRepo repository;
 
-    /**
-     * GET 1 client
-     * @param c id du client
-     * @return Client converti en JSON
-     *//*
-    @GetMapping("{id}")
-    public membres getUtil(@PathVariable("id") membres c) {
-        return c;
-    }*/
+
 
 
     @GetMapping("{id}")
     Optional<membres> one(@PathVariable Long id) {
         return repository.findById(id);
+    }
+
+    @GetMapping("email/{mail}")
+    membres email(@PathVariable("mail") String mail) {
+        return repository.findDistinctByMail(mail);
     }
 
     /**
@@ -46,6 +43,8 @@ public class utilisateursController {
     public Iterable<membres> getUtil() {
         return repository.findAll();
     }
+
+
 /*
     @GetMapping
     public String Testafficher() {
@@ -83,6 +82,24 @@ public class utilisateursController {
                     newMembres.setId(id);
                     return repository.save(newMembres);
                 });
+    }
+
+    @PutMapping("modifcertif/{Datecertif}/{id}")
+    membres modifcertif(@PathVariable("Datecertif") String datecertif,@PathVariable("id") Long id) {
+
+
+        membres monM =  repository.findDistinctById(id);
+        monM.setDateCertif(datecertif);
+        return repository.save(monM);
+    }
+
+    @PutMapping("payement/{Datepayement}/{iban}")
+    membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") Long iban) {
+
+
+        membres monM =  repository.findDistinctByIban(iban);
+        monM.setPayement(payement);
+        return repository.save(monM);
     }
 
     @DeleteMapping("{id}")

@@ -30,13 +30,18 @@ public class membres {
 
     public String dateCertif;
 
+    public String payement;
+
     public String statut;
+
+    public long iban ;
 
     public membres(){
 
     }
 
-    public membres(Long id, String nom, String prenom, String adresse, String mail, String mdp, int niveau, String numLicence, String dateCertif, String statut) {
+
+    public membres(Long id, String nom, String prenom, String adresse, String mail, String mdp, int niveau, String numLicence, String dateCertif, String payement, String statut, long iban) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -46,9 +51,22 @@ public class membres {
         this.niveau = niveau;
         this.numLicence = numLicence;
         this.dateCertif = dateCertif;
+        this.payement = payement;
         this.statut = statut;
+        this.iban = iban;
     }
 
+    public String getPayement() {
+        return payement;
+    }
+
+    public void setPayement(String payement) {
+        this.payement = payement;
+    }
+
+    public long getIban() {
+        return iban;
+    }
 
     public Long getId() {
         return id;
@@ -128,5 +146,9 @@ public class membres {
 
     public void setStatut(String statut) {
         this.statut = statut;
+    }
+
+    public void setIban(long iban) {
+        this.iban = iban;
     }
 }
