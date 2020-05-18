@@ -93,11 +93,10 @@ public class utilisateursController {
         return repository.save(monM);
     }
 
-    @PutMapping("payement/{Datepayement}/{iban}")
-    membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") Long iban) {
+    @PutMapping("payement/{Datepayement}/{iban}/{id}")
+    membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") Long iban,@PathVariable("id") Long id) {
 
-
-        membres monM =  repository.findDistinctByIban(iban);
+        membres monM =  repository.findDistinctById(id);
         monM.setPayement(payement);
         return repository.save(monM);
     }
