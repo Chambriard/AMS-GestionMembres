@@ -34,6 +34,8 @@ public class membres {
 
     public String statut;
 
+    public Boolean enseignant;
+
     public long iban ;
 
     public membres(){
@@ -41,7 +43,7 @@ public class membres {
     }
 
 
-    public membres(Long id, String nom, String prenom, String adresse, String mail, String mdp, int niveau, String numLicence, String dateCertif, String payement, String statut, long iban) {
+    public membres(Long id, String nom, String prenom, String adresse, String mail, String mdp, int niveau, String numLicence, String dateCertif, String payement, String statut, long iban, Boolean enseignant) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -54,6 +56,7 @@ public class membres {
         this.payement = payement;
         this.statut = statut;
         this.iban = iban;
+        this.enseignant = enseignant;
     }
 
     public String getPayement() {
@@ -66,6 +69,10 @@ public class membres {
 
     public long getIban() {
         return iban;
+    }
+
+    public Boolean getEnseignant() {
+        return enseignant;
     }
 
     public Long getId() {
@@ -102,6 +109,11 @@ public class membres {
 
     public String getDateCertif() {
         return dateCertif;
+    }
+
+
+    public void setEnseignant(Boolean enseignant) {
+        this.enseignant = enseignant;
     }
 
     public String getStatut() {

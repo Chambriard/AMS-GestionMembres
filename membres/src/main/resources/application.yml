@@ -14,7 +14,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       # Ne pas laisser en prod (mettre update au début)
-      ddl-auto: create-drop
+      ddl-auto: update
 # Reglage serveur
 server:
   port: 10000
