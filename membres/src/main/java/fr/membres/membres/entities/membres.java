@@ -36,6 +36,7 @@ public class membres {
 
     public Boolean enseignant;
 
+
     public long iban ;
 
     public membres(){
@@ -57,6 +58,7 @@ public class membres {
         this.statut = statut;
         this.iban = iban;
         this.enseignant = enseignant;
+
     }
 
     public String getPayement() {

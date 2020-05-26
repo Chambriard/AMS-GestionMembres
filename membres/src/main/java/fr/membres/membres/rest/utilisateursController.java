@@ -10,6 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 import java.util.Optional;
 
 
@@ -100,6 +104,26 @@ public class utilisateursController {
         membres monM =  repository.findDistinctById(id);
         monM.setEnseignant(enseigant);
         return repository.save(monM);
+    }
+
+    @GetMapping("nvEnseignant")
+    HashMap<Integer, Integer> nvEnseignant() {
+        HashMap<Integer, Integer> nvEnseignant = new HashMap<>();
+        Iterable<membres> MesM = repository.findAll();
+
+        for(int i = 1; i < 6; i++){
+            int nbEn = 0;
+            for (membres monM : MesM)
+            {
+                if(monM.getEnseignant().equals(true) && monM.getNiveau() == i){
+                    nbEn ++;
+                }
+            }
+            nvEnseignant.put(i,nbEn);
+        }
+
+
+        return nvEnseignant;
     }
 
     @PutMapping("payement/{Datepayement}/{iban}/{id}")
