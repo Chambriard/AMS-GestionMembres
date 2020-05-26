@@ -93,6 +93,15 @@ public class utilisateursController {
         return repository.save(monM);
     }
 
+    @PutMapping("modifEnseignant/{statut}/{id}")
+    membres modifcertif(@PathVariable("statut") Boolean enseigant,@PathVariable("id") Long id) {
+
+
+        membres monM =  repository.findDistinctById(id);
+        monM.setEnseignant(enseigant);
+        return repository.save(monM);
+    }
+
     @PutMapping("payement/{Datepayement}/{iban}/{id}")
     membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") Long iban,@PathVariable("id") Long id) {
 
