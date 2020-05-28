@@ -7,6 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 import java.util.Optional;
 
 
@@ -104,9 +108,29 @@ public class utilisateursController {
         monM.setEnseignant(isEnseignant);
         return repository.save(monM);
     }
+    
+    @GetMapping("nvEnseignant")
+    HashMap<Integer, Integer> nvEnseignant() {
+        HashMap<Integer, Integer> nvEnseignant = new HashMap<>();
+        Iterable<membres> MesM = repository.findAll();
 
-    @PostMapping("payement/{Datepayement}/{iban}/{id}")
-    membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") String iban,@PathVariable("id") Long id) {
+        for(int i = 1; i < 6; i++){
+            int nbEn = 0;
+            for (membres monM : MesM)
+            {
+                if(monM.getEnseignant().equals(true) && monM.getNiveau() == i){
+                    nbEn ++;
+                }
+            }
+            nvEnseignant.put(i,nbEn);
+        }
+
+
+        return nvEnseignant;
+    }
+
+    @PutMapping("payement/{Datepayement}/{iban}/{id}")
+    membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") Long iban,@PathVariable("id") Long id) {
 
         membres monM =  repository.findDistinctById(id);
         monM.setPayement(payement);
