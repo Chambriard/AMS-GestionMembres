@@ -1,8 +1,5 @@
 package fr.membres.membres.rest;
 
-
-
-
 import fr.membres.membres.entities.membres;
 import fr.membres.membres.repo.utilisateursRepo;
 import org.slf4j.Logger;
@@ -61,7 +58,7 @@ public class utilisateursController {
     }
 
 
-    @PutMapping("{id}")
+    @PostMapping("{id}")
     membres replaceMembres(@RequestBody membres newMembres, @PathVariable Long id) {
 
         return repository.findById(id)
@@ -93,17 +90,23 @@ public class utilisateursController {
         return repository.save(monM);
     }
 
-    @PutMapping("modifEnseignant/{statut}/{id}")
-    membres modifcertif(@PathVariable("statut") Boolean enseigant,@PathVariable("id") Long id) {
+    @PostMapping("modifEnseignant/{statut}/{id}")
+    membres modifcertif(@PathVariable("statut") String enseigant,@PathVariable("id") String id) {
 
+        logger.info("enseignant:"+enseigant+", id:"+new Long(id));
+        membres monM =  repository.findDistinctById(new Long(id));
 
-        membres monM =  repository.findDistinctById(id);
-        monM.setEnseignant(enseigant);
+        boolean isEnseignant=false;
+        if (enseigant.equals("1")) {
+            isEnseignant=true;
+            logger.info("enseignant:"+enseigant);
+        };
+        monM.setEnseignant(isEnseignant);
         return repository.save(monM);
     }
 
-    @PutMapping("payement/{Datepayement}/{iban}/{id}")
-    membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") Long iban,@PathVariable("id") Long id) {
+    @PostMapping("payement/{Datepayement}/{iban}/{id}")
+    membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") String iban,@PathVariable("id") Long id) {
 
         membres monM =  repository.findDistinctById(id);
         monM.setPayement(payement);
