@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -86,7 +87,7 @@ public class utilisateursController {
     }
 
     @PutMapping("modifcertif/{Datecertif}/{id}")
-    membres modifcertif(@PathVariable("Datecertif") String datecertif,@PathVariable("id") Long id) {
+    membres modifcertif(@PathVariable("Datecertif") Date datecertif, @PathVariable("id") Long id) {
 
 
         membres monM =  repository.findDistinctById(id);
