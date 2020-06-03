@@ -1,6 +1,8 @@
 package fr.membres.membres.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,7 +29,8 @@ public class membres {
     public int niveau;
 
     public String numLicence;
-
+@JsonFormat
+        (shape =  JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     public Date dateCertif;
 
     public String payement;
