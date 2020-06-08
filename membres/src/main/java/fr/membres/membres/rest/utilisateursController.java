@@ -108,7 +108,7 @@ public class utilisateursController {
         monM.setEnseignant(isEnseignant);
         return repository.save(monM);
     }
-    
+
     @GetMapping("nvEnseignant")
     HashMap<Integer, Integer> nvEnseignant() {
         HashMap<Integer, Integer> nvEnseignant = new HashMap<>();
@@ -118,7 +118,7 @@ public class utilisateursController {
             int nbEn = 0;
             for (membres monM : MesM)
             {
-                if(monM.getEnseignant().equals(true) && monM.getNiveau() == i){
+                if(monM.getEnseignant() != null && monM.getEnseignant().equals(true) && monM.getNiveau() == i){
                     nbEn ++;
                 }
             }
@@ -137,9 +137,5 @@ public class utilisateursController {
         return repository.save(monM);
     }
 
-    @DeleteMapping("{id}")
-    void deleteMembre(@PathVariable Long id) {
-        repository.deleteById(id);
-    }
 }
 
