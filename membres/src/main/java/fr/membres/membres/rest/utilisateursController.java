@@ -77,6 +77,8 @@ public class utilisateursController {
                     membres.setNiveau(newMembres.getNiveau());
                     membres.setNumLicence(newMembres.getNumLicence());
                     membres.setStatut(newMembres.getStatut());
+                    membres.setEnseignant(newMembres.getEnseignant());
+                    membres.setPayement(newMembres.getPayement());
 
                     return repository.save(membres);
                 })
