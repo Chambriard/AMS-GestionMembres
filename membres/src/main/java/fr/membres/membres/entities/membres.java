@@ -40,7 +40,7 @@ public class membres {
     public Boolean enseignant;
 
 
-    public long iban ;
+    public String iban ;
 
     public membres(){
 
@@ -59,7 +59,6 @@ public class membres {
         this.dateCertif = dateCertif;
         this.payement = payement;
         this.statut = statut;
-        this.iban = iban;
         this.enseignant = enseignant;
 
     }
@@ -72,7 +71,7 @@ public class membres {
         this.payement = payement;
     }
 
-    public long getIban() {
+    public String getIban() {
         return iban;
     }
 
@@ -165,7 +164,7 @@ public class membres {
         this.statut = statut;
     }
 
-    public void setIban(long iban) {
+    public void setIban(String iban) {
         this.iban = iban;
     }
 }
