@@ -1,10 +1,12 @@
 package fr.membres.membres.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import java.util.Date;
 
 
 @Entity
@@ -27,8 +29,9 @@ public class membres {
     public int niveau;
 
     public String numLicence;
-
-    public String dateCertif;
+@JsonFormat
+        (shape =  JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    public Date dateCertif;
 
     public String payement;
 
@@ -44,7 +47,7 @@ public class membres {
     }
 
 
-    public membres(Long id, String nom, String prenom, String adresse, String mail, String mdp, int niveau, String numLicence, String dateCertif, String payement, String statut, String iban, Boolean enseignant) {
+    public membres(Long id, String nom, String prenom, String adresse, String mail, String mdp, int niveau, String numLicence, Date dateCertif, String payement, String statut, long iban, Boolean enseignant) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -56,7 +59,6 @@ public class membres {
         this.dateCertif = dateCertif;
         this.payement = payement;
         this.statut = statut;
-        this.iban = iban;
         this.enseignant = enseignant;
 
     }
@@ -109,7 +111,7 @@ public class membres {
         return numLicence;
     }
 
-    public String getDateCertif() {
+    public Date getDateCertif() {
         return dateCertif;
     }
 
@@ -154,7 +156,7 @@ public class membres {
         this.numLicence = numLicence;
     }
 
-    public void setDateCertif(String dateCertif) {
+    public void setDateCertif(Date dateCertif) {
         this.dateCertif = dateCertif;
     }
 
