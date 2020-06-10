@@ -33,6 +33,8 @@ public class membres {
         (shape =  JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     public Date dateCertif;
 
+@JsonFormat
+        (shape =  JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     public String payement;
 
     public String statut;

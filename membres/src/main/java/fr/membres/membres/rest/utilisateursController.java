@@ -41,7 +41,7 @@ public class utilisateursController {
      * GET liste des clients
      * @return liste des clients en JSON. [] si aucun compte.
      */
-    @GetMapping("")
+    @GetMapping("/getMembre")
     public Iterable<membres> getUtil() {
         return repository.findAll();
     }
@@ -57,7 +57,7 @@ public class utilisateursController {
      * @param util client à ajouter (import JSON)
      * @return utilisateur ajouté
      */
-    @PostMapping("")
+    @PostMapping("PostMembre")
     public membres postUtil(@RequestBody membres util) {
         return repository.save(util);
     }
