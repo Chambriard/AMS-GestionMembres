@@ -27,7 +27,7 @@ public class utilisateursController {
 
 
 
-    @GetMapping("{id}")
+    @GetMapping("GetOne/{id}")
     Optional<membres> one(@PathVariable Long id) {
         return repository.findById(id);
     }
@@ -41,7 +41,7 @@ public class utilisateursController {
      * GET liste des clients
      * @return liste des clients en JSON. [] si aucun compte.
      */
-    @GetMapping("/getMembre")
+    @GetMapping("getMembres")
     public Iterable<membres> getUtil() {
         return repository.findAll();
     }
@@ -63,7 +63,7 @@ public class utilisateursController {
     }
 
 
-    @PostMapping("{id}")
+    @PostMapping("UpadateMemebre/{id}")
     membres replaceMembres(@RequestBody membres newMembres, @PathVariable Long id) {
 
         return repository.findById(id)
