@@ -98,7 +98,7 @@ public class utilisateursController {
     }
 
     @PostMapping("modifEnseignant/{statut}/{id}")
-    membres modifcertif(@PathVariable("statut") String enseigant,@PathVariable("id") String id) {
+    membres modifEnseignant(@PathVariable("statut") String enseigant,@PathVariable("id") String id) {
 
         logger.info("enseignant:"+enseigant+", id:"+new Long(id));
         membres monM =  repository.findDistinctById(new Long(id));
