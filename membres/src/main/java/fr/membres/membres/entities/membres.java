@@ -30,7 +30,7 @@ public class membres {
 
     public String numLicence;
 @JsonFormat
-        (shape =  JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+        (shape =  JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public Date dateCertif;
 
     public String payement;
