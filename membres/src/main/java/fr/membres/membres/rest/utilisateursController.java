@@ -27,7 +27,7 @@ public class utilisateursController {
 
 
 
-    @GetMapping("{id}")
+    @GetMapping("GetOne/{id}")
     Optional<membres> one(@PathVariable Long id) {
         return repository.findById(id);
     }
@@ -41,7 +41,7 @@ public class utilisateursController {
      * GET liste des clients
      * @return liste des clients en JSON. [] si aucun compte.
      */
-    @GetMapping("")
+    @GetMapping("getMembres")
     public Iterable<membres> getUtil() {
         return repository.findAll();
     }
@@ -57,13 +57,13 @@ public class utilisateursController {
      * @param util client à ajouter (import JSON)
      * @return utilisateur ajouté
      */
-    @PostMapping("")
+    @PostMapping("PostMembre")
     public membres postUtil(@RequestBody membres util) {
         return repository.save(util);
     }
 
 
-    @PostMapping("{id}")
+    @PostMapping("UpadateMemebre/{id}")
     membres replaceMembres(@RequestBody membres newMembres, @PathVariable Long id) {
 
         return repository.findById(id)
@@ -98,7 +98,7 @@ public class utilisateursController {
     }
 
     @PostMapping("modifEnseignant/{statut}/{id}")
-    membres modifcertif(@PathVariable("statut") String enseigant,@PathVariable("id") String id) {
+    membres modifEnseignant(@PathVariable("statut") String enseigant,@PathVariable("id") String id) {
 
         logger.info("enseignant:"+enseigant+", id:"+new Long(id));
         membres monM =  repository.findDistinctById(new Long(id));
