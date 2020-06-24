@@ -88,7 +88,7 @@ public class utilisateursController {
                 });
     }
 
-    @PutMapping("modifcertif/{Datecertif}/{id}")
+    @PostMapping("modifcertif/{Datecertif}/{id}")
     membres modifcertif(@PathVariable("Datecertif") Date datecertif, @PathVariable("id") Long id) {
 
 
@@ -132,8 +132,8 @@ public class utilisateursController {
         return nvEnseignant;
     }
 
-    @PutMapping("payement/{Datepayement}/{iban}/{id}")
-    membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") Long iban,@PathVariable("id") Long id) {
+    @PostMapping("payement/{Datepayement}/{iban}/{id}")
+    membres payement(@PathVariable("Datepayement") String payement,@PathVariable("iban") String iban,@PathVariable("id") Long id) {
 
         membres monM =  repository.findDistinctById(id);
         monM.setPayement(payement);
